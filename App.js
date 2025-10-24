@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {ScrollView, Text, StatusBar,StyleSheet} from 'react-native';
+import Boat from './components/Boat';
+import boatData from './data';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+    return (
+        <ScrollView>
+            <StatusBar background = "gray" />
+            <Text style={styles.header}>GetABoat - For Sale</Text>
+            {boatData.map(boat => <Boat key = {boat.name} name= {boat.name} description = {boat.description} picture={boat.picture}/>)}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        </ScrollView>
+    );
+};
+const styles = StyleSheet.create({header:{
+    textAlign: 'center',
+    marginVertical: 5,
+    fontSize: 20,
+    fontWeight: 'bold'
+    } });
+export default App;
